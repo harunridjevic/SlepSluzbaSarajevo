@@ -4,14 +4,14 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const images = [
-  { src: "/placeholder.svg?height=400&width=600", alt: "Tow truck on highway" },
-  { src: "/placeholder.svg?height=400&width=600", alt: "Towing a car" },
-  { src: "/placeholder.svg?height=400&width=600", alt: "Roadside assistance" },
-  { src: "/placeholder.svg?height=400&width=600", alt: "Vehicle recovery" },
-  { src: "/placeholder.svg?height=400&width=600", alt: "Fleet of tow trucks" },
-  { src: "/placeholder.svg?height=400&width=600", alt: "Night time towing" },
-  { src: "/placeholder.svg?height=400&width=600", alt: "Tow truck driver helping customer" },
-  { src: "/placeholder.svg?height=400&width=600", alt: "Heavy duty towing" },
+  { src: "/gallery-img1.jpg?height=400&width=600", alt: "Tow truck on highway" },
+  { src: "/gallery-img2.jpg?height=400&width=600", alt: "Towing a car" },
+  { src: "/gallery-img3.jpg?height=400&width=600", alt: "Roadside assistance" },
+  { src: "/gallery-img4.jpg?height=400&width=600", alt: "Vehicle recovery" },
+  { src: "/gallery-img5.jpg?height=400&width=600", alt: "Fleet of tow trucks" },
+  { src: "/gallery-img6.jpg?height=400&width=600", alt: "Night time towing" },
+  { src: "/gallery-img7.jpg?height=400&width=600", alt: "Tow truck driver helping customer" },
+  { src: "/main-img.jpg?height=400&width=600", alt: "Heavy duty towing" },
 ]
 
 export default function Gallery() {
@@ -23,7 +23,7 @@ export default function Gallery() {
   return (
     <section className="py-20 px-6 bg-white">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-blue-800">Our Gallery</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-blue-800">Galerija</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <Dialog key={index}>

@@ -1,35 +1,35 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
-const faqs = [
+const cestoPostavljanaPitanja = [
   {
-    question: "How quickly can you respond to a towing request?",
+    question: "Koliko brzo možete odgovoriti na zahtjev za vuču?",
     answer:
-      "We pride ourselves on our fast response times. In most cases, we can reach you within 30 minutes to an hour, depending on your location and traffic conditions.",
+      "Ponosimo se brzim vremenima odgovora. U većini slučajeva možemo doći do vas u roku od 30 minuta do sat vremena, zavisno od vaše lokacije i saobraćajnih uslova.",
   },
   {
-    question: "What types of vehicles can you tow?",
+    question: "Koje vrste vozila možete vući?",
     answer:
-      "We have the equipment to tow a wide range of vehicles, including cars, motorcycles, SUVs, vans, and even some light-duty trucks. For heavy-duty towing, please call us to discuss your specific needs.",
+      "Imamo opremu za vuču širokog spektra vozila, uključujući automobile, motocikle, SUV-ove, furgone, pa čak i neka vozila za lakši teret. Za vuču teških vozila, molimo vas da nas pozovete kako bismo razgovarali o vašim specifičnim potrebama.",
   },
   {
-    question: "Do you offer 24/7 service?",
+    question: "Nudite li uslugu 24/7?",
     answer:
-      "Yes, we offer round-the-clock service, 365 days a year. We understand that vehicle emergencies can happen at any time, so we're always here to help.",
+      "Da, nudimo uslugu 24 časa, 365 dana u godini. Razumijemo da se vanredne situacije sa vozilima mogu desiti u bilo kojem trenutku, pa smo uvijek tu da pomognemo.",
   },
   {
-    question: "What areas do you serve?",
+    question: "Koje oblasti pokrivate?",
     answer:
-      "We provide towing and roadside assistance services throughout the greater metropolitan area and surrounding suburbs. Please call us to confirm service in your specific location.",
+      "Pružamo usluge vuče i pomoći na putu u široj metropolitanskoj oblasti i okolnim predgrađima. Molimo vas da nas pozovete kako biste potvrdili uslugu na vašoj specifičnoj lokaciji.",
   },
   {
-    question: "How much does towing cost?",
+    question: "Koliko košta vuča?",
     answer:
-      "Towing costs can vary depending on the type of vehicle, distance, and specific situation. We provide upfront pricing before beginning any service. Please call us for a quote.",
+      "Cijena vuče može varirati zavisno od vrste vozila, udaljenosti i specifične situacije. Nudimo unaprijed određene cijene prije nego što započnemo bilo koju uslugu. Molimo vas da nas pozovete za tačnu ponudu.",
   },
   {
-    question: "Do you accept insurance for payment?",
+    question: "Prihvatate li osiguranje kao način plačanja?",
     answer:
-      "Yes, we work with most major insurance companies. If your policy covers towing, we can often bill your insurance directly. Please have your insurance information ready when you call.",
+      "Da, radimo sa većinom velikih osiguravajućih kompanija. Ako vaša polisa pokriva vuču, često možemo direktno naplatiti vašu osiguravajuću kompaniju. Molimo vas da imate informacije o osiguranju spremne prilikom poziva.",
   },
 ]
 
@@ -37,9 +37,9 @@ export default function FAQ() {
   return (
     <section className="py-20 px-6 bg-blue-50">
       <div className="container mx-auto max-w-3xl">
-        <h2 className="text-3xl font-bold text-center mb-12 text-blue-800">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-blue-800">Često postavljana pitanja</h2>
         <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
+          {cestoPostavljanaPitanja.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger>{faq.question}</AccordionTrigger>
               <AccordionContent>{faq.answer}</AccordionContent>

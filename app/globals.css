@@ -91,4 +91,22 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom Scrollbar Styles */
+  /* For Webkit browsers like Chrome, Safari */
+  ::-webkit-scrollbar {
+    width: 6px; /* Adjust width to make it smaller */
+    height: 6px; /* Adjust height for horizontal scrollbar */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+ 
 }
