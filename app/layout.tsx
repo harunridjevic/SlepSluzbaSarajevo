@@ -1,19 +1,20 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import "./globals.css"
+import AnimationWrapper from "../components/AnimationWrapper"
+import { metadata } from "./metadata"
 
-export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-}
+export { metadata }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AnimationWrapper>{children}</AnimationWrapper>
+      </body>
     </html>
   )
 }
+

@@ -7,7 +7,7 @@ export default function Header() {
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-3">
           <Truck size={30} className="text-yellow-400" /> {/* Reduced icon size */}
-          <span className="text-2xl font-semibold tracking-tight">TowPro</span> {/* Reduced text size */}
+          <span className="text-2xl font-semibold tracking-tight mt-1">Šlep Služba</span> {/* Reduced text size */}
         </Link>
         <nav>
           <ul className="flex space-x-6 text-base"> {/* Reduced text size */}

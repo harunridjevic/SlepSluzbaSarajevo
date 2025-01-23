@@ -3,7 +3,6 @@ import Hero from "../components/hero"
 import Services from "../components/services"
 import WhyChooseUs from "../components/why-choose-us"
 import Gallery from "../components/gallery"
-
 import FAQ from "../components/faq"
 import ContactForm from "../components/contact-form"
 import Footer from "../components/footer"
@@ -26,3 +25,4 @@ export default function Home() {
     </div>
   )
 }
+
