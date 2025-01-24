@@ -1,11 +1,11 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Truck, Car, Wrench, Clock, Battery, Key, FuelIcon as GasPump, PenToolIcon as Tools } from "lucide-react"
+import { Truck, Car, Wrench, Clock, Battery, Key, FuelIcon as GasPump, PenToolIcon as Tools, LifeBuoy as Help } from "lucide-react"
 
 const usluge = [
   {
     icon: Truck,
     title: "Vučna služba",
-    description: "Brza i sigurna vuča za sve vrste vozila, od automobila do teških kamiona.",
+    description: "Brza i sigurna vuča za sve vrste vozila, od automobila do teških kamiona. Mogućnost transporta 2 vozila.",
   },
   {
     icon: Car,
@@ -13,27 +13,15 @@ const usluge = [
     description: "Brza pomoć za kvarove, probušene gume i druge hitne situacije.",
   },
   {
-    icon: Wrench,
-    title: "Opservacija vozila",
-    description: "Specijalizovana oprema za teške situacije, uključujući vuču izvan puta.",
-  },
+    icon: Help,
+    title: "Izvlačenje vozila",
+    description: "Brza i sigurna pomoć pri izvlačenju vozila iz nepristupačnih terena uz korištenje specijalizovane opreme.",
+  }, 
   {
     icon: Clock,
     title: "Dostupnost 24/7",
     description: "Služba dostupna 24 časa, svaki dan, u bilo koje vrijeme, za vaš mir.",
-  },
-  { icon: Battery, title: "Pokretanje vozila", description: "Brza usluga za pokretanje akumulatora i vraćanje na put." },
-  {
-    icon: Key,
-    title: "Služba za zaključavanje",
-    description: "Profesionalna pomoć kada se zaključate u vozilu.",
-  },
-  {
-    icon: GasPump,
-    title: "Dostava goriva",
-    description: "Hitna dostava goriva kada neočekivano ponestane.",
-  },
-  { icon: Tools, title: "Mobilne popravke", description: "Popravke na licu mjesta za manja mehanička oštećenja." },
+  }
 ]
 
 export default function Usluge() {
@@ -49,9 +37,6 @@ export default function Usluge() {
                 <CardTitle>{usluga.title}</CardTitle>
                 <CardDescription>{usluga.description}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <p className="text-sm text-blue-600 font-semibold">Saznajte više →</p>
-              </CardContent>
             </Card>
           ))}
         </div>

@@ -1,0 +1,20 @@
+window.local_zaccordion_0_data = [
+{
+ auto: "1",
+ speed: "1",
+ timeout: "2",
+ trigger: "1"
+},
+{
+ image: "index_htm_files/1224.jpg"
+},
+{
+ image: "index_htm_files/1225.jpg"
+},
+{
+ image: "index_htm_files/1226.jpg"
+},
+{
+ image: "index_htm_files/1227.jpg"
+}
+];

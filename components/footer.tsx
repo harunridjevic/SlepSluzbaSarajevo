@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-blue-900 text-white py-12 px-6">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h3 className="text-xl font-bold mb-4">TowPro</h3>
+          <h3 className="text-xl font-bold mb-4">Šlep Služba Sarajevo</h3>
           <p className="mb-4">Vaš pouzdani partner za vuču, dostupan 24/7 za sve vaše hitne potrebe vezane za vozila.</p>
           <div className="flex space-x-4">
             <Link href="#" className="hover:text-blue-300 transition-colors">
@@ -52,38 +52,35 @@ export default function Footer() {
           <h4 className="text-lg font-semibold mb-4">Usluge</h4>
           <ul className="space-y-2">
             <li>
-              <Link href="#" className="hover:text-blue-300 transition-colors">
-                Vuča
-              </Link>
+              Vučna služba
             </li>
             <li>
-              <Link href="#" className="hover:text-blue-300 transition-colors">
-                Pomoć na cesti
-              </Link>
+              Pomoć na putu
             </li>
             <li>
-              <Link href="#" className="hover:text-blue-300 transition-colors">
-                Obnova vozila
-              </Link>
+              Izvlačenje vozila
             </li>
             <li>
-              <Link href="#" className="hover:text-blue-300 transition-colors">
-                Dostava goriva
-              </Link>
+              Dostupnost 24/7
             </li>
           </ul>
         </div>
         <div>
           <h4 className="text-lg font-semibold mb-4">Kontakt podaci</h4>
-          <p>123 Ulica za vuču</p>
-          <p>Anytown, ST 12345</p>
-          <p>Telefon: (555) 123-4567</p>
+          <p>Adresa: Avde Palića 1</p>
+          <p>Sarajevo</p>
+          <p>Telefon: (+387) 62 223 225</p>
           <p>Email: info@towpro.com</p>
         </div>
       </div>
       <div className="container mx-auto mt-8 pt-8 border-t border-blue-800">
-        <p>&copy; 2025 TowPro. Sva prava zadržana.</p>
-      </div>
+  <p>&copy; 2025 TowPro. Sva prava zadržana.</p>
+  <p className="mt-2 text-sm text-white-500">
+    By <a href="https://github.com/harunridjevic" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Harun Riđević</a>.
+  </p>
+</div>
+
+
     </footer>
   )
 }

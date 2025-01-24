@@ -1,0 +1,57 @@
+window.local_imageGallerySimple_v11_0_data = [
+{
+ border: "4",
+ cols: "3",
+ effect: "0",
+ popupsize: "750",
+ rotation: "-360",
+ shadowblur: "4",
+ shadowdim: "4",
+ trans: "0.3"
+},
+{
+ image: "index_htm_files/988.jpg"
+},
+{
+ image: "index_htm_files/989.jpg"
+},
+{
+ image: "index_htm_files/990.jpg"
+},
+{
+ image: "index_htm_files/991.jpg"
+},
+{
+ image: "index_htm_files/992.jpg"
+},
+{
+ image: "index_htm_files/993.jpg"
+},
+{
+ image: "index_htm_files/994.jpg"
+},
+{
+ image: "index_htm_files/995.jpg"
+},
+{
+ image: "index_htm_files/996.jpg"
+},
+{
+ image: "index_htm_files/997.jpg"
+},
+{
+ image: "index_htm_files/998.jpg"
+},
+{
+ image: "index_htm_files/999.jpg"
+},
+{
+ image: "index_htm_files/1000.jpg"
+},
+{
+ image: "index_htm_files/1001.jpg"
+},
+{
+ image: "index_htm_files/1002.jpg"
+}
+];

@@ -1,0 +1,61 @@
+Local:
+https://slep-sluzba.net/
+https://www.vucnasluzba-zuko.com.ba/cjenovnik.htm
+https://bihamk.ba/pomoc-na-cesti/pomocasistencija-na-cesti/37
+https://verano-bih.com/slep-sluzba/
+https://spstarbike-slepsluzba.com/slep-sluzba-bosna-i-hercegovina/
+https://slepsluzbakocic-banjaluka.com/
+
+Global:
+https://www.goodyearautoservice.com/en_US/learn/towing.html
+https://walderastowing.com/
+https://www.ten4tow.com/
+https://roadside.aaa.com/
+
+Slobodne domene:
+http://pomocnacesti.com/
+http://vucnapomoc.com/
+http://slepanje.ba/
+http://brzavucna.ba/
+http://autoslep.ba/
+http://pomocnacesti.ba/
+http://vucnapomoc.ba/
+http://SarajevoVucna.com
+http://slepsarajevo.com/
+
+nic.ba
+
+
+odabrati tehnologiju za stvaranje web stranice (next, react, typescript, tailwind) - done
+
+napraviti struktru - done
+
+napraviti dizajn - done
+
+napraviti skocni prozor za galeriju - done
+
+napraviti skocni prozor za broj telefona telefona 
+
+napraviti formu - done
+
+napraviti responzivno za telefone i tablete - done
+
+napraviti animacije (navigacijske tipke i animacija za ucitavanje stranice) - 
+
+stvaranje funkcionalne forme -
+
+staviti odgovarajuci tekst
+
+Ostaviti vucna sluzba, pomoc na vozilu dostunnost 24/7
+
+izbaciti trecu i sedmu - done
+
+slep sluzba sarajevo - done
+
+izvlacenje vozila, i mogucnost transporta dva vozila
+
+poslati link
+
+slepsluzbasarajevo.com
+
+dark mode

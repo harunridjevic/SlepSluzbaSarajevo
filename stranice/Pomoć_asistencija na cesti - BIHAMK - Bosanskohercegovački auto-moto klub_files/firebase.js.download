@@ -1,0 +1,220 @@
+var firebaseToken = '';
+
+messaging.usePublicVapidKey("BP4bgi2pwp2dwv6WCP8Y-66x-E0-ynBEdHlkATsFXdy5um6Jn8keTnVZOwk8WW6xlerE79ftbn_nrp9j_kZt7r8");
+
+messaging.onTokenRefresh(() => {
+    messaging.getToken().then((refreshedToken) => {
+        consoleLog('Token refreshed.');
+        // Indicate that the new Instance ID token has not yet been sent to the app server.
+        setTokenRefreshed(true);
+        setTokenSentToServer(false);
+        setTokenSyncedWithUser(false);
+        // Send Instance ID token to app server.
+        sendTokenToServer(refreshedToken);
+    }).catch((err) => {
+        console.error('Unable to retrieve refreshed token ', err);
+    });
+});
+
+messaging.onMessage((payload) => {
+    consoleLog('Message received. ');
+    consoleLog(payload);
+    const {title, ...options} = payload.notification;
+    navigator.serviceWorker.ready.then(registration => {
+        registration.showNotification(title, options);
+    });
+});
+
+function resetUI() {
+    showToken('loading...');
+    // Get Instance ID token. Initially this makes a network call, once retrieved subsequent calls to getToken will return from cache.
+    messaging.getToken().then((currentToken) => {
+        if (currentToken) {
+            sendTokenToServer(currentToken);
+            updateUIForPushEnabled(currentToken);
+        } else {
+            // Show permission request.
+            consoleLog('No Instance ID token available. Request permission to generate one.');
+            // Show permission UI.
+            setTokenSentToServer(false);
+            setTokenSyncedWithUser(false);
+            requestPermission();
+        }
+    }).catch((err) => {
+        console.error('An error occurred while retrieving token. ', err);
+        setTokenSentToServer(false);
+        setTokenSyncedWithUser(false);
+    });
+}
+
+function showToken(currentToken) {
+    consoleLog(currentToken);
+}
+
+function sendTokenToServer(currentToken) {
+    setUserGrantedNotifications(true);
+    firebaseToken = currentToken;
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    if (!isTokenSentToServer() || isTokenRefreshed()) {
+        consoleLog('Sending token to server...');
+        fetch('/firebase/sync', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: 'token=' + currentToken,
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setTokenSentToServer(true);
+                setTokenRefreshed(false);
+                setTokenSyncedWithUser(true);
+                saveTokenToLocalStorage(currentToken);
+                // consoleLog(data.message);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    } else {
+        consoleLog('Token already sent to server so won\'t send it again unless it changes');
+
+        if (!isTokenSyncedWithUser()) {
+            consoleLog('Syncing token with user...');
+
+            fetch('/firebase/sync', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                body: 'token=' + currentToken,
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(response => {
+                    setTokenSyncedWithUser(true);
+                    saveTokenToLocalStorage(currentToken);
+                    // consoleLog(response.message);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch2 operation:', error);
+                });
+        }
+    }
+}
+
+function requestPermission() {
+    consoleLog('Requesting permission...');
+
+    Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+            consoleLog('Notification permission granted.');
+            // In many cases once an app has been granted notification permission, it should update its UI reflecting this.
+            setUserAskedForPermission(true);
+            setUserGrantedNotifications(true);
+            resetUI();
+        } else if (permission === 'denied') {
+            denyPermission();
+            setUserAskedForPermission(true);
+            setUserGrantedNotifications(false);
+            // loader_off();
+        } else {
+            // loader_off();
+            consoleLog('Unable to get permission to notify.');
+        }
+    });
+}
+
+function denyPermission() {
+    // Notification.permission = 'denied';
+    consoleLog('Notification permission denied.');
+}
+
+function updateUIForPushEnabled(currentToken) {
+    showToken(currentToken);
+}
+
+function isTokenSentToServer() {
+    return window.localStorage.getItem('sentToServer') === '1';
+}
+
+function setTokenSentToServer(sent) {
+    window.localStorage.setItem('sentToServer', sent ? '1' : '0');
+}
+
+function isTokenSyncedWithUser() {
+    return window.localStorage.getItem('syncedWithUser') === '1';
+}
+
+function setTokenSyncedWithUser(synced) {
+    window.localStorage.setItem('syncedWithUser', synced ? '1' : '0');
+}
+
+function isTokenRefreshed() {
+    return window.localStorage.getItem('tokenRefreshed') === '1';
+}
+
+function setTokenRefreshed(refreshed) {
+    window.localStorage.setItem('tokenRefreshed', refreshed ? '1' : '0');
+}
+
+function isUserAskedForPermission() {
+    return window.localStorage.getItem('userAskedForPermission') === '1';
+}
+
+function setUserAskedForPermission(answer) {
+    window.localStorage.setItem('userAskedForPermission', answer ? '1' : '0');
+}
+
+function userGrantedNotifications() {
+    return window.localStorage.getItem('userGrantedNotifications') === '1';
+}
+
+function setUserGrantedNotifications(answer) {
+    window.localStorage.setItem('userGrantedNotifications', answer ? '1' : '0');
+}
+
+function saveTokenToLocalStorage(token) {
+    window.localStorage.setItem('firebaseToken', token);
+}
+
+function consoleLog(log) {
+    if (firebase_log) {
+        console.log('%c FIREBASE ', 'background: #dc3545; color: #fff', log);
+    }
+}
+
+function showNotificationModal(timeOutInSeconds, nowTimestamp) {
+    if (!("Notification" in window)) {
+        console.log("This browser does not support desktop notification");
+        return;
+    }
+    if (Notification.permission === 'denied') {
+        console.log("Notifications blocked. Please enable them in your browser.");
+        return;
+    }
+
+    if (isTokenSentToServer()) {
+        consoleLog("Token Sent To Server");
+        resetUI();
+    } else {
+        if (isUserAskedForPermission() && (userGrantedNotifications())) {
+            consoleLog("User Asked For Permission");
+            consoleLog("User Granted Notifications");
+
+            resetUI();
+        } else if (!isUserAskedForPermission()) {
+            resetUI();
+        }
+    }
+}

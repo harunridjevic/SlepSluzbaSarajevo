@@ -5,7 +5,7 @@ const reasons = [
   "Najsavremenija vučna oprema za sigurnu i efikasnu uslugu",
   "Konkurentne i transparentne cijene bez skrivenih naknada",
   "Munjevito vreme odziva kako biste smanjili vaše čekanje",
-  "Potpuno osiguran i licenciran za vaš za usluge šlepanja",
+  "Potpuno osiguran i licenciran za vaše usluge šlepanja",
   "Ekološki prihvatljive prakse za smanjenje našeg uticaja na životnu sredinu",
   "Ljubazno i ​​ljubazno osoblje posvećeno zadovoljstvu kupaca",
   "Sveobuhvatan asortiman usluga za sve vaše potrebe",
@@ -27,9 +27,9 @@ export default function WhyChooseUs() {
           <div className="md:w-1/2 md:pl-10">
             <ul className="space-y-4 grid gap-4 md:grid-cols-2">
               {reasons.map((reason, index) => (
-                <li key={index} className="flex items-start">
-                  <CheckCircle className="text-green-500 mr-2 mt-1 flex-shrink-0" />
-                  <span>{reason}</span>
+                <li key={index} className={`flex items-center h-16 ${index === 0 ? 'mt-3.5' : ''}`}> {/* Add margin-top to the first item */}
+                  <CheckCircle className="text-green-500 mr-2 flex-shrink-0" />
+                  <span className="flex-1">{reason}</span>
                 </li>
               ))}
             </ul>
@@ -37,6 +37,5 @@ export default function WhyChooseUs() {
         </div>
       </div>
     </section>
-
   )
 }

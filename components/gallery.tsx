@@ -1,24 +1,27 @@
 "use client";
-import { useState } from "react"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useState } from "react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
   { src: "/gallery-img1.jpg?height=400&width=600", alt: "Tow truck on highway" },
   { src: "/gallery-img2.jpg?height=400&width=600", alt: "Towing a car" },
-  { src: "/gallery-img3.jpg?height=400&width=600", alt: "Roadside assistance" },
   { src: "/gallery-img4.jpg?height=400&width=600", alt: "Vehicle recovery" },
   { src: "/gallery-img5.jpg?height=400&width=600", alt: "Fleet of tow trucks" },
   { src: "/gallery-img6.jpg?height=400&width=600", alt: "Night time towing" },
-  { src: "/gallery-img7.jpg?height=400&width=600", alt: "Tow truck driver helping customer" },
   { src: "/main-img.jpg?height=400&width=600", alt: "Heavy duty towing" },
-]
+  { src: "/gallery-img7.jpg?height=400&width=600", alt: "Night time towing" },
+  { src: "/gallery-img8.jpg?height=400&width=600", alt: "Night time towing" },
+  { src: "/gallery-img9.jpg?height=400&width=600", alt: "Night time towing" },
+  { src: "/gallery-img10.jpg?height=400&width=600", alt: "Night time towing" },
+  { src: "/gallery-img11.jpg?height=400&width=600", alt: "Night time towing" },
+];
 
 export default function Gallery() {
-  const [currentImage, setCurrentImage] = useState(0)
+  const [currentImage, setCurrentImage] = useState(0);
 
-  const nextImage = () => setCurrentImage((prev) => (prev + 1) % images.length)
-  const prevImage = () => setCurrentImage((prev) => (prev - 1 + images.length) % images.length)
+  const nextImage = () => setCurrentImage((prev) => (prev + 1) % images.length);
+  const prevImage = () => setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
 
   return (
     <section className="py-20 px-6 bg-white">
@@ -26,16 +29,16 @@ export default function Gallery() {
         <h2 className="text-3xl font-bold text-center mb-12 text-blue-800">Galerija</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {images.map((image, index) => (
-            <Dialog key={index}>
-              <DialogTrigger>
+            <Dialog key={index} onOpenChange={(open) => { if (!open) setCurrentImage(index); }}>
+              <DialogTrigger onClick={() => setCurrentImage(index)}>
                 <img
                   src={image.src || "/placeholder.svg"}
                   alt={image.alt}
                   className="w-full h-48 object-cover rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer"
                 />
               </DialogTrigger>
-              <DialogContent className="max-w-3xl">
-                <div className="relative">
+              <DialogContent className="max-w-3xl p-5">
+                <div className="relative mt-5">
                   <img
                     src={images[currentImage].src || "/placeholder.svg"}
                     alt={images[currentImage].alt}
@@ -60,5 +63,5 @@ export default function Gallery() {
         </div>
       </div>
     </section>
-  )
+  );
 }

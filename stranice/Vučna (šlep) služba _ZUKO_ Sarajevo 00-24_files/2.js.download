@@ -1,0 +1,86 @@
+window.local_simpleGallery5Columns_2_data = [
+{
+ dimpage: "Y",
+ showshadow: "Y"
+},
+{
+ image: "index_htm_files/655.jpg",
+ thumbnail: "index_htm_files/656.jpg"
+},
+{
+ image: "index_htm_files/657.jpg",
+ thumbnail: "index_htm_files/658.jpg"
+},
+{
+ image: "index_htm_files/659.jpg",
+ thumbnail: "index_htm_files/660.jpg"
+},
+{
+ image: "index_htm_files/661.jpg",
+ thumbnail: "index_htm_files/662.jpg"
+},
+{
+ image: "index_htm_files/663.jpg",
+ thumbnail: "index_htm_files/664.jpg"
+},
+{
+ image: "index_htm_files/665.jpg",
+ thumbnail: "index_htm_files/666.jpg"
+},
+{
+ image: "index_htm_files/667.jpg",
+ thumbnail: "index_htm_files/668.jpg"
+},
+{
+ image: "index_htm_files/669.jpg",
+ thumbnail: "index_htm_files/670.jpg"
+},
+{
+ image: "index_htm_files/671.jpg",
+ thumbnail: "index_htm_files/672.jpg"
+},
+{
+ image: "index_htm_files/673.jpg",
+ thumbnail: "index_htm_files/674.jpg"
+},
+{
+ image: "index_htm_files/675.jpg",
+ thumbnail: "index_htm_files/676.jpg"
+},
+{
+ image: "index_htm_files/677.jpg",
+ thumbnail: "index_htm_files/678.jpg"
+},
+{
+ image: "index_htm_files/679.jpg",
+ thumbnail: "index_htm_files/680.jpg"
+},
+{
+ image: "index_htm_files/681.jpg",
+ thumbnail: "index_htm_files/682.jpg"
+},
+{
+ image: "index_htm_files/683.jpg",
+ thumbnail: "index_htm_files/684.jpg"
+},
+{
+ image: "index_htm_files/685.jpg",
+ thumbnail: "index_htm_files/686.jpg"
+},
+{
+ image: "index_htm_files/687.jpg",
+ thumbnail: "index_htm_files/688.jpg"
+},
+{
+ image: "index_htm_files/689.jpg",
+ thumbnail: "index_htm_files/690.jpg"
+},
+{
+ image: "index_htm_files/691.jpg",
+ thumbnail: "index_htm_files/692.jpg"
+},
+{
+ image: "index_htm_files/693.jpg",
+ thumbnail: "index_htm_files/694.jpg"
+}
+];

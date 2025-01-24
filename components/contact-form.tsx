@@ -1,35 +1,74 @@
 "use client";
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import emailjs from 'emailjs-com'; // Import EmailJS
+
+// Define the shape of the form data
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  serviceType: string;
+  message: string;
+}
 
 export default function KontaktForma() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
     serviceType: "",
     message: "",
-  })
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSelectChange = (value: string) => {
-    setFormData({ ...formData, serviceType: value })
-  }
+    setFormData({ ...formData, serviceType: value });
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Obradi slanje forme ovdje
-    console.log(formData)
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Create a plain object to match the expected type
+    const emailData: Record<string, unknown> = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        serviceType: formData.serviceType,
+        message: formData.message,
+    };
+
+    // Send email using EmailJS
+    try {
+        await emailjs.send('service_ikkbldl', 'template_1jqbt9f', {
+          from_name: formData.name,
+          from_email: formData.email,
+          from_phone: formData.phone,
+          service_type: formData.serviceType,
+          message: formData.message,
+      }, 'vJiHCItbz_USsbtZU');
+        alert('Poruka je uspešno poslata!');
+        setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            serviceType: "",
+            message: "",
+        });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        alert('Došlo je do greške prilikom slanja poruke.');
+    }
+};
 
   return (
-    <section id="contact" className="py-20 px-6 bg-white">
+    <section id="contact" className="py-20 px-6 bg-blue-50">
       <div className="container mx-auto max-w-2xl">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-800">Kontaktirajte nas</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -57,15 +96,15 @@ export default function KontaktForma() {
             <label htmlFor="serviceType" className="block mb-2 text-sm font-medium text-gray-700">
               Vrsta usluge
             </label>
-            <Select onValueChange={handleSelectChange}>
+            <Select onValueChange={handleSelectChange} name="serviceType">
               <SelectTrigger>
                 <SelectValue placeholder="Izaberite uslugu" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="towing">Vuča</SelectItem>
-                <SelectItem value="roadside">Pomoć na cesti</SelectItem>
-                <SelectItem value="recovery">Oporavak vozila</SelectItem>
-                <SelectItem value="other">Ostalo</SelectItem>
+                <SelectItem value="vuca">Vuča</SelectItem>
+                <SelectItem value="pomoc-na-cesti">Pomoć na cesti</SelectItem>
+                <SelectItem value="izvlacenje-vozila">Izvlačenje vozila</SelectItem>
+                <SelectItem value="other">Ostalo </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -81,5 +120,5 @@ export default function KontaktForma() {
         </form>
       </div>
     </section>
-  )
+  );
 }

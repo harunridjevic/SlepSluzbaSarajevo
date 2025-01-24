@@ -17,7 +17,6 @@ export default function Home() {
         <Services />
         <WhyChooseUs />
         <Gallery />
-        <FAQ />
         <ContactForm />
       </main>
       <Footer />
