@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { motion, AnimatePresence } from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const TowTruckAnimation = () => {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShow(false)
-    }, 3000) // Animation lasts for 3 seconds
+      setShow(false);
+    }, 2000); // Animation lasts for 3 seconds
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -24,23 +24,23 @@ const TowTruckAnimation = () => {
           transition={{ duration: 0.5 }}
         >
           <motion.div
-            initial={{ right: "-100%" }}  // Start off the screen (right side)
-            animate={{ right: "100%" }}   // Move to the left side (off the screen)
-            exit={{ right: "-100%" }}
-            transition={{ duration: 1, ease: "linear" }}  // Adjusted speed for faster movement
+            initial={{ x: "100%" }}  // Start off the screen (right side)
+            animate={{ x: "-100%" }} // Move to the left side (off the screen)
+            exit={{ x: "100%" }}
+            transition={{ duration: 1, ease: "linear" }}  // Adjusted speed for smoother movement
             className="absolute"
           >
             {/* Tow truck SVG */}
             <img 
               src="/tow-truck.svg" 
               alt="Tow Truck" 
-              className="w-48 h-48 text-white fill-current transform"
+              className="w-48 h-48 text-white fill-current"
             />
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default TowTruckAnimation
+export default TowTruckAnimation;

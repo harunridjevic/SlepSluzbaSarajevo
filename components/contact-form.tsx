@@ -23,6 +23,9 @@ export default function KontaktForma() {
     serviceType: "",
     message: "",
   });
+  
+  // Add state for button text
+  const [buttonStatus, setButtonStatus] = useState("Pošaljite poruku");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,6 +38,9 @@ export default function KontaktForma() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Set the button status to "Sending..."
+    setButtonStatus("Slanje...");
+
     // Create a plain object to match the expected type
     const emailData: Record<string, unknown> = {
         name: formData.name,
@@ -46,26 +52,54 @@ export default function KontaktForma() {
 
     // Send email using EmailJS
     try {
-        await emailjs.send('service_ikkbldl', 'template_1jqbt9f', {
-          from_name: formData.name,
-          from_email: formData.email,
-          from_phone: formData.phone,
-          service_type: formData.serviceType,
-          message: formData.message,
-      }, 'vJiHCItbz_USsbtZU');
-        alert('Poruka je uspešno poslata!');
-        setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            serviceType: "",
-            message: "",
-        });
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+  
+      // Check if all required variables are defined
+      if (!serviceId || !templateId || !userId) {
+          throw new Error('Missing EmailJS configuration');
+      }
+  
+      await emailjs.send(
+          serviceId,
+          templateId,
+          {
+              from_name: formData.name,
+              from_email: formData.email,
+              from_phone: formData.phone,
+              service_type: formData.serviceType,
+              message: formData.message,
+          },
+          userId
+      );
+  
+      setButtonStatus("Poruka je uspešno poslata!");
+
+      // Clear the form data
+      setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          serviceType: "",
+          message: "",
+      });
+
+      // Reset button text after 3 seconds
+      setTimeout(() => {
+        setButtonStatus("Pošaljite poruku");
+      }, 3000);
+  
     } catch (error) {
-        console.error('Error sending email:', error);
-        alert('Došlo je do greške prilikom slanja poruke.');
+      console.error('Error sending email:', error);
+      setButtonStatus("Došlo je do greške");
+
+      // Reset button text after 3 seconds
+      setTimeout(() => {
+        setButtonStatus("Pošaljite poruku");
+      }, 3000);
     }
-};
+  };
 
   return (
     <section id="contact" className="py-20 px-6 bg-blue-50 dark:bg-gray-800">
@@ -107,7 +141,6 @@ export default function KontaktForma() {
                 <SelectItem value="other">Ostalo</SelectItem>
               </SelectContent>
             </Select>
-
           </div>
           <div>
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -116,7 +149,7 @@ export default function KontaktForma() {
             <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required className="dark:bg-gray-700 dark:text-white dark:border-gray-600" />
           </div>
           <Button type="submit" className="w-full dark:bg-blue-700 dark:hover:bg-blue-600">
-            Pošaljite poruku
+            {buttonStatus}
           </Button>
         </form>
       </div>

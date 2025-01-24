@@ -88,11 +88,6 @@ export default function Header() {
                     </Link>
                   </li>
                 </ul>
-                <div className="flex justify-center mt-4">
-                  <button onClick={toggleDarkMode} className="p-2 rounded-full bg-blue-800 hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-500 transition-colors duration-200">
-                    {isDarkMode ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} />}
-                  </button>
-                </div>
                 <button onClick={closeMenu} className="mt-4 w-full bg-blue-700 dark:bg-gray-700 text-white py-2 rounded-full">
                   Close
                 </button>

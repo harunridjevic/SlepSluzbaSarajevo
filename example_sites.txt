@@ -40,13 +40,13 @@ napraviti formu - done
 
 napraviti responzivno za telefone i tablete - done
 
-napraviti animacije (navigacijske tipke i animacija za ucitavanje stranice) - 
+napraviti animacije (navigacijske tipke i animacija za ucitavanje stranice) - done
 
-stvaranje funkcionalne forme -
+stvaranje funkcionalne forme - done
 
-staviti odgovarajuci tekst
+staviti odgovarajuci tekst - done
 
-Ostaviti vucna sluzba, pomoc na vozilu dostunnost 24/7
+Ostaviti vucna sluzba, pomoc na vozilu dostunnost 24/7 - done
 
 izbaciti trecu i sedmu - done
 
@@ -54,8 +54,10 @@ slep sluzba sarajevo - done
 
 izvlacenje vozila, i mogucnost transporta dva vozila
 
-poslati link
+poslati link - done
 
 slepsluzbasarajevo.com
 
-dark mode
+dark mode - done
+
+funkcionalna tipka za poziv - 

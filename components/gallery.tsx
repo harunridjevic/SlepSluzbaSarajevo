@@ -24,7 +24,7 @@ export default function Gallery() {
   const prevImage = () => setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <section className="py-20 px-6 bg-white dark:bg-gray-900 ">
+    <section className="py-20 px-6 bg-white dark:bg-gray-900">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-blue-800 dark:text-white">Galerija</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -42,7 +42,7 @@ export default function Gallery() {
                   <img
                     src={images[currentImage].src || "/placeholder.svg"}
                     alt={images[currentImage].alt}
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-lg"
                   />
                   <button
                     onClick={prevImage}
@@ -64,4 +64,5 @@ export default function Gallery() {
       </div>
     </section>
   );
+  
 }

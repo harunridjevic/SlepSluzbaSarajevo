@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { PhoneCall, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 export default function Hero() {
@@ -66,29 +67,44 @@ export default function Hero() {
         </div>
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-75">
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm w-full transform scale-95 opacity-0 transition-all duration-300 ease-out opacity-100 scale-100">
-            <h2 className="text-3xl font-semibold mb-6 text-center text-black dark:text-white">Pozovite nas odmah</h2>
-            <a
-              href="tel:+1234567890"
-              className="text-xl text-blue-700 hover:underline text-center block mb-6"
-              onClick={closeModal}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-75"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm w-full"
             >
-              +387 62 223 225
-            </a>
-            <div className="mt-4 text-center">
-              <Button
-                variant="outline"
-                className="w-full bg-yellow-500 text-black dark:bg-yellow-400 dark:text-gray-900 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
+              <h2 className="text-3xl font-semibold mb-6 text-center text-black dark:text-white">
+                Pozovite nas odmah
+              </h2>
+              <a
+                href="tel:+38762223225"
+                className="text-xl text-blue-700 hover:underline text-center block mb-6"
                 onClick={closeModal}
               >
-                Zatvori
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+                +387 62 223 225
+              </a>
+              <div className="mt-4 text-center">
+                <Button
+                  variant="outline"
+                  className="w-full bg-yellow-500 text-black dark:bg-yellow-400 dark:text-gray-900 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
+                  onClick={closeModal}
+                >
+                  Zatvori
+                </Button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
