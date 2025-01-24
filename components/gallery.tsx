@@ -24,9 +24,9 @@ export default function Gallery() {
   const prevImage = () => setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-20 px-6 bg-white dark:bg-gray-900 ">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-blue-800">Galerija</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-blue-800 dark:text-white">Galerija</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <Dialog key={index} onOpenChange={(open) => { if (!open) setCurrentImage(index); }}>
@@ -37,7 +37,7 @@ export default function Gallery() {
                   className="w-full h-48 object-cover rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer"
                 />
               </DialogTrigger>
-              <DialogContent className="max-w-3xl p-5">
+              <DialogContent className="max-w-3xl p-5 bg-white dark:bg-gray-800">
                 <div className="relative mt-5">
                   <img
                     src={images[currentImage].src || "/placeholder.svg"}
