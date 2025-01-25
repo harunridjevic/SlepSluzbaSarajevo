@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="md:w-1/2 mb-10 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Brza i pouzdana vučna služba</h1>
           <p className="text-xl mb-6">
-            Vaš pouzdan partner za siguran transport vozila – 24/7!
+            Vaš pouzdan partner za siguran transport vozila, putničkih i teretnih vozila na teritoriji BiH!
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button

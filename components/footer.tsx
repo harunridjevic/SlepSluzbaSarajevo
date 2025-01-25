@@ -67,10 +67,10 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="text-lg font-semibold mb-4">Kontakt podaci</h4>
-          <p>Adresa: Avde Palića 1</p>
+          <p>Adresa: Kolodvorska 8</p>
           <p>Sarajevo</p>
           <p>Telefon: (+387) 62 223 225</p>
-          <p>Email: </p>
+          <p>Email: slepsluzbabakir@gmail.com</p>
         </div>
       </div>
       <div className="container mx-auto mt-8 pt-8 border-t border-blue-800 dark:border-gray-600">

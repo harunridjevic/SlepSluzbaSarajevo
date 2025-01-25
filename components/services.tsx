@@ -5,7 +5,7 @@ const usluge = [
   {
     icon: Truck,
     title: "Vučna služba",
-    description: "Brza i sigurna vuča za sve vrste vozila, od automobila do teških kamiona. Mogućnost transporta 2 vozila.",
+    description: "Brz i siguran transport za sve vrste putničkih i teretnih vozila do 3 tone nosivosti. Mogućnost prijevoza 2 vozila.",
   },
   {
     icon: Car,

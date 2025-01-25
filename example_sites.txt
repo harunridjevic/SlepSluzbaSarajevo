@@ -60,4 +60,18 @@ slepsluzbasarajevo.com
 
 dark mode - done
 
-funkcionalna tipka za poziv - 
+funkcionalna tipka za poziv - done
+
+animacija za modal za poziv - done
+
+template za mailove sa stranice - done
+
+header - done
+
+galerija - done
+
+footer - done
+
+dio za usluge - done
+
+lista prednosti - done
