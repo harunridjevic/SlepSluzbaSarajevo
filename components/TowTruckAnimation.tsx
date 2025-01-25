@@ -32,9 +32,9 @@ const TowTruckAnimation = () => {
           >
             {/* Tow truck SVG */}
             <img 
-              src="/tow-truck.svg" 
+              src="/towing_car.png" 
               alt="Tow Truck" 
-              className="w-48 h-48 text-white fill-current"
+              className="w-76 h-24 text-white fill-current"
             />
           </motion.div>
         </motion.div>

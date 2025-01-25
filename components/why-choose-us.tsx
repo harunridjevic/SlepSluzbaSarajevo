@@ -7,7 +7,7 @@ const reasons = [
   "Munjevito vreme odziva kako biste smanjili vaše čekanje",
   "Potpuno osiguran i licenciran za vaše usluge šlepanja",
   "Ekološki prihvatljive prakse za smanjenje našeg uticaja na životnu sredinu",
-  "Ljubazno i ​​ljubazno osoblje posvećeno zadovoljstvu kupaca",
+  "Ljubazno osoblje posvećeno zadovoljstvu kupaca",
   "Sveobuhvatan asortiman usluga za sve vaše potrebe",
 ]
 

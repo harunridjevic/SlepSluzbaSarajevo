@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -8,20 +7,9 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold mb-4">Šlep Služba Sarajevo</h3>
           <p className="mb-4">Vaš pouzdani partner za vuču, dostupan 24/7 za sve vaše hitne potrebe vezane za vozila.</p>
-          <div className="flex space-x-4">
-            <Link href="#" className="hover:text-blue-300 transition-colors dark:hover:text-blue-500">
-              <Facebook />
-            </Link>
-            <Link href="#" className="hover:text-blue-300 transition-colors dark:hover:text-blue-500">
-              <Twitter />
-            </Link>
-            <Link href="#" className="hover:text-blue-300 transition-colors dark:hover:text-blue-500">
-              <Instagram />
-            </Link>
-            <Link href="#" className="hover:text-blue-300 transition-colors dark:hover:text-blue-500">
-              <Linkedin />
-            </Link>
-          </div>
+          <Link href="https://olx.ba/artikal/53689504" target="_blank" rel="noopener noreferrer">
+            <img src="/olx.svg" alt="OLX" className="w-6 h-6 text-white" />
+          </Link>
         </div>
         <div>
           <h4 className="text-lg font-semibold mb-4">Brzi linkovi</h4>
