@@ -34,6 +34,7 @@ export default function Gallery() {
                 <img
                   src={image.src || "/placeholder.svg"}
                   alt={image.alt}
+                  loading="lazy"
                   className="w-full h-48 object-cover rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer"
                 />
               </DialogTrigger>
@@ -42,6 +43,7 @@ export default function Gallery() {
                   <img
                     src={images[currentImage].src || "/placeholder.svg"}
                     alt={images[currentImage].alt}
+                    loading="lazy"
                     className="w-full h-auto rounded-lg"
                   />
                   <button
@@ -64,5 +66,4 @@ export default function Gallery() {
       </div>
     </section>
   );
-  
 }
