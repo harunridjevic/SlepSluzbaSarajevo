@@ -38,8 +38,8 @@ export default function Header() {
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-3">
                     <Image 
-              src="/TowTruckIcon.png" 
-              alt="Tow Truck Icon" 
+              src="/TowTruckIcon.webp" 
+              alt="Ikonica šlepera" 
               width={50} 
               height={50} 
             />

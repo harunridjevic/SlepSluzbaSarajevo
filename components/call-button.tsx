@@ -79,7 +79,6 @@ export default function CallButton() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </>
   );
 }

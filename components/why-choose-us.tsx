@@ -1,4 +1,5 @@
-import { CheckCircle } from "lucide-react"
+import { CheckCircle } from "lucide-react";
+import Image from "next/image";
 
 const reasons = [
   "Iskusan i profesionalan tim sa višegodišnjim iskustvom",
@@ -9,7 +10,7 @@ const reasons = [
   "Ekološki prihvatljive prakse za smanjenje našeg uticaja na životnu sredinu",
   "Ljubazno osoblje posvećeno zadovoljstvu kupaca",
   "Sveobuhvatan asortiman usluga za sve vaše potrebe",
-]
+];
 
 export default function WhyChooseUs() {
   return (
@@ -18,9 +19,11 @@ export default function WhyChooseUs() {
         <h2 className="text-3xl font-bold text-center mb-12 text-blue-800 dark:text-white">Zašto izabrati nas?</h2>
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
           <div className="md:w-1/2 mb-10 md:mb-0">
-            <img
-              src="/gallery-img1.jpg?height=400&width=600"
-              alt="Professional tow truck driver"
+            <Image
+              src="/gallery-img1.webp"
+              alt="Šleper u akciji"
+              width={600}
+              height={400}
               className="rounded-lg shadow-xl dark:shadow-gray-700"
             />
           </div>
@@ -37,5 +40,5 @@ export default function WhyChooseUs() {
         </div>
       </div>
     </section>
-  )
+  );
 }

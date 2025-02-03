@@ -12,7 +12,7 @@ export default function AnimationWrapper({ children }: { children: React.ReactNo
     const timer = setTimeout(() => {
       setShowAnimation(false)
       setFadeIn(true) // Trigger fade-in effect after animation ends
-    }, 1000) // Tow truck animation lasts for 3 seconds
+    }, 1000) // Tow truck animation lasts for 1 second
 
     return () => clearTimeout(timer)
   }, [])

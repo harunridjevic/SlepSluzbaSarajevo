@@ -1,14 +1,16 @@
-// pages/index.js
 import Head from 'next/head';
-import Header from "../components/header";
-import Hero from "../components/hero";
-import Services from "../components/services";
-import WhyChooseUs from "../components/why-choose-us";
-import Gallery from "../components/gallery";
-import FAQ from "../components/faq";
-import ContactForm from "../components/contact-form";
-import Footer from "../components/footer";
-import CallButton from "../components/call-button";
+import dynamic from 'next/dynamic';
+
+// Dynamically import components to reduce initial JS payload
+const Header = dynamic(() => import("../components/header"));
+const Hero = dynamic(() => import("../components/hero"));
+const Services = dynamic(() => import("../components/services"));
+const WhyChooseUs = dynamic(() => import("../components/why-choose-us"));
+const Gallery = dynamic(() => import("../components/gallery"));
+const FAQ = dynamic(() => import("../components/faq"));
+const ContactForm = dynamic(() => import("../components/contact-form"));
+const Footer = dynamic(() => import("../components/footer"));
+const CallButton = dynamic(() => import("../components/call-button"));
 
 export default function Home() {
   return (
@@ -19,12 +21,14 @@ export default function Home() {
         <meta name="keywords" content="slep služba BiH, vučna služba BiH, vuča automobila, hitna pomoć na putu BiH, vuča vozila 24/7, tow service Bosnia, šlep služba, šlep služba sarajevo" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Slep Služba Sarajevo - Brza i Pouzdana Vuča 24/7" />
-        <meta property="og:description" content="Slep služba u Sarajevu i cijeloj Bosni i Hercegovini. Brza i pouzdana vuča automobila 24/7. Kontaktirajte nas za hitnu pomoć na putu." />
-        <meta property="og:url" content="https://example.com" />
+        <meta property="og:description" content="Slep služba, vučna služba u Sarajevu i cijeloj Bosni i Hercegovini. Brza i pouzdana vuča automobila 24/7. Kontaktirajte nas za hitnu pomoć na putu." />
+        <meta property="og:url" content="https://www.slepsluzbasarajevo.com" />
         <meta property="og:type" content="website" />
         <meta name="twitter:title" content="Slep Služba u BiH - Brza i Pouzdana Vuča 24/7" />
         <meta name="twitter:description" content="Slep služba u cijeloj Bosni i Hercegovini. Brza i pouzdana vuča automobila 24/7. Kontaktirajte nas za hitnu pomoć na putu." />
         
+        {/* Preload fonts and any critical assets */}
+        <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         
         {/* Structured Data (JSON-LD) for Local Business */}
         <script

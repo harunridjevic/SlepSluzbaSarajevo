@@ -32,8 +32,8 @@ const TowTruckAnimation = () => {
           >
             {/* Tow truck SVG */}
             <img 
-              src="/towing_car.png" 
-              alt="Tow Truck" 
+              src="/towing_car.webp" 
+              alt="Šleper" 
               className="w-76 h-24 text-white fill-current"
             />
           </motion.div>

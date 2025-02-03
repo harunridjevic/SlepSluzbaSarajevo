@@ -2,19 +2,20 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const images = [
-  { src: "/gallery-img1.jpg?height=400&width=600", alt: "Tow truck on highway" },
-  { src: "/gallery-img2.jpg?height=400&width=600", alt: "Towing a car" },
-  { src: "/gallery-img4.jpg?height=400&width=600", alt: "Vehicle recovery" },
-  { src: "/gallery-img5.jpg?height=400&width=600", alt: "Fleet of tow trucks" },
-  { src: "/gallery-img6.jpg?height=400&width=600", alt: "Night time towing" },
-  { src: "/main-img.jpg?height=400&width=600", alt: "Heavy duty towing" },
-  { src: "/gallery-img7.jpg?height=400&width=600", alt: "Night time towing" },
-  { src: "/gallery-img8.jpg?height=400&width=600", alt: "Night time towing" },
-  { src: "/gallery-img9.jpg?height=400&width=600", alt: "Night time towing" },
-  { src: "/gallery-img10.jpg?height=400&width=600", alt: "Night time towing" },
-  { src: "/gallery-img11.jpg?height=400&width=600", alt: "Night time towing" },
+  { src: "/gallery-img1.webp", alt: "Šlepanje auta po danu" },
+  { src: "/gallery-img2.webp", alt: "Šlepanje auta po danu" },
+  { src: "/gallery-img4.webp", alt: "Šlepanje auta po danu" },
+  { src: "/gallery-img5.webp", alt: "Šlepanje auta po danu" },
+  { src: "/gallery-img6.webp", alt: "Šlepanje auta po danu" },
+  { src: "/main-img.webp", alt: "Šleper" },
+  { src: "/gallery-img7.webp", alt: "Šlepanje auta po danu" },
+  { src: "/gallery-img8.webp", alt: "Šlepanje auta po noći" },
+  { src: "/gallery-img9.webp", alt: "Šlepanje auta po noći" },
+  { src: "/gallery-img10.webp", alt: "Šlepanje auta po danu" },
+  { src: "/gallery-img11.webp", alt: "Šlepanje auta po danu" },
 ];
 
 export default function Gallery() {
@@ -31,18 +32,22 @@ export default function Gallery() {
           {images.map((image, index) => (
             <Dialog key={index} onOpenChange={(open) => { if (!open) setCurrentImage(index); }}>
               <DialogTrigger onClick={() => setCurrentImage(index)}>
-                <img
+                <Image
                   src={image.src || "/placeholder.svg"}
                   alt={image.alt}
+                  width={300}
+                  height={200}
                   loading="lazy"
                   className="w-full h-48 object-cover rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer"
                 />
               </DialogTrigger>
               <DialogContent className="max-w-3xl p-5 bg-white dark:bg-gray-800">
                 <div className="relative mt-5">
-                  <img
+                  <Image
                     src={images[currentImage].src || "/placeholder.svg"}
                     alt={images[currentImage].alt}
+                    width={600}
+                    height={400}
                     loading="lazy"
                     className="w-full h-auto rounded-lg"
                   />

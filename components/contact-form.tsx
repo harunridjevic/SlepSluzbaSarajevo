@@ -1,12 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import emailjs from 'emailjs-com'; // Import EmailJS
+import emailjs from "emailjs-com"; // Import EmailJS
 
-// Define the shape of the form data
 interface FormData {
   name: string;
   email: string;
@@ -23,83 +22,71 @@ export default function KontaktForma() {
     serviceType: "",
     message: "",
   });
-  
-  // Add state for button text
+
   const [buttonStatus, setButtonStatus] = useState("Pošaljite poruku");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    },
+    []
+  );
 
-  const handleSelectChange = (value: string) => {
-    setFormData({ ...formData, serviceType: value });
-  };
+  const handleSelectChange = useCallback(
+    (value: string) => {
+      setFormData((prev) => ({ ...prev, serviceType: value }));
+    },
+    []
+  );
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
 
-    // Set the button status to "Sending..."
-    setButtonStatus("Slanje...");
+      setButtonStatus("Slanje...");
 
-    // Create a plain object to match the expected type
-    const emailData: Record<string, unknown> = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        serviceType: formData.serviceType,
-        message: formData.message,
-    };
+      const { name, email, phone, serviceType, message } = formData;
+      const emailData = { name, email, phone, serviceType, message };
 
-    // Send email using EmailJS
-    try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
-  
-      // Check if all required variables are defined
-      if (!serviceId || !templateId || !userId) {
-          throw new Error('Missing EmailJS configuration');
-      }
-  
-      await emailjs.send(
-          serviceId,
-          templateId,
+      try {
+        const { NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, NEXT_PUBLIC_EMAILJS_USER_ID } =
+          process.env;
+
+        if (!NEXT_PUBLIC_EMAILJS_SERVICE_ID || !NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || !NEXT_PUBLIC_EMAILJS_USER_ID) {
+          throw new Error("Missing EmailJS configuration");
+        }
+
+        await emailjs.send(
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           {
-              from_name: formData.name,
-              from_email: formData.email,
-              from_phone: formData.phone,
-              service_type: formData.serviceType,
-              message: formData.message,
+            from_name: name,
+            from_email: email,
+            from_phone: phone,
+            service_type: serviceType,
+            message,
           },
-          userId
-      );
-  
-      setButtonStatus("Poruka je uspešno poslata!");
+          NEXT_PUBLIC_EMAILJS_USER_ID
+        );
 
-      // Clear the form data
-      setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          serviceType: "",
-          message: "",
-      });
+        setButtonStatus("Poruka je uspešno poslata!");
 
-      // Reset button text after 3 seconds
-      setTimeout(() => {
-        setButtonStatus("Pošaljite poruku");
-      }, 3000);
-  
-    } catch (error) {
-      console.error('Error sending email:', error);
-      setButtonStatus("Došlo je do greške");
+        setFormData({ name: "", email: "", phone: "", serviceType: "", message: "" });
 
-      // Reset button text after 3 seconds
-      setTimeout(() => {
-        setButtonStatus("Pošaljite poruku");
-      }, 3000);
-    }
-  };
+        setTimeout(() => {
+          setButtonStatus("Pošaljite poruku");
+        }, 3000);
+      } catch (error) {
+        console.error("Error sending email:", error);
+        setButtonStatus("Došlo je do greške");
+
+        setTimeout(() => {
+          setButtonStatus("Pošaljite poruku");
+        }, 3000);
+      }
+    },
+    [formData]
+  );
 
   return (
     <section id="contact" className="py-20 px-6 bg-blue-50 dark:bg-gray-800">
@@ -111,20 +98,44 @@ export default function KontaktForma() {
               <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Ime
               </label>
-              <Input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="dark:bg-gray-700 dark:text-white dark:border-gray-600" />
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
+              />
             </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Email
               </label>
-              <Input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="dark:bg-gray-700 dark:text-white dark:border-gray-600" />
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
+              />
             </div>
           </div>
           <div>
             <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
               Telefon
             </label>
-            <Input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required className="dark:bg-gray-700 dark:text-white dark:border-gray-600" />
+            <Input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            />
           </div>
           <div>
             <label htmlFor="serviceType" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -146,7 +157,14 @@ export default function KontaktForma() {
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
               Poruka
             </label>
-            <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required className="dark:bg-gray-700 dark:text-white dark:border-gray-600" />
+            <Textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            />
           </div>
           <Button type="submit" className="w-full dark:bg-blue-700 dark:hover:bg-blue-600">
             {buttonStatus}

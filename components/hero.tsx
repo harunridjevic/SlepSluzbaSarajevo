@@ -1,9 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { PhoneCall, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function Hero() {
     }
   }, []);
 
-  const toggleDarkMode = () => {
+  const toggleDarkMode = useCallback(() => {
     setIsDarkMode((prev) => !prev);
     if (isDarkMode) {
       document.documentElement.classList.remove("dark");
@@ -26,7 +27,7 @@ export default function Hero() {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     }
-  };
+  }, [isDarkMode]);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -59,10 +60,17 @@ export default function Hero() {
           </div>
         </div>
         <div className="md:w-1/2">
-          <img
-            src="/main-img.jpg?height=400&width=600"
-            alt="Tow truck in action"
+          <Image
+            src="/main-img.webp"
+            alt="Naš šleper"
+            width={600}
+            height={400}
             className="rounded-lg shadow-2xl"
+            priority
+            decoding="async"
+            loading="eager"
+            style={{ objectFit: 'cover' }}
+            sizes="(max-width: 768px) 100vw, 600px"
           />
         </div>
       </div>
@@ -104,7 +112,7 @@ export default function Hero() {
                 <Button
                   variant="outline"
                   className="w-full bg-green-500 text-white dark:bg-green-400 dark:text-gray-900 hover:bg-green-400 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-                  onClick={() => window.location.href='tel:+38762223225'}
+                  onClick={() => window.location.href = 'tel:+38762223225'}
                 >
                   Pozovi
                 </Button>
