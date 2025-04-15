@@ -18,7 +18,11 @@ The website is **live** and available at: [https://slepsluzbasarajevo.com](https
 
 Here’s a preview of what the site looks like:
 
-![Šlep Služba Sarajevo Website](ss1.png)
+![Šlep Služba Sarajevo Website](ss1.PNG)
+
+And this is what it looks like on a phone + dark mode:
+
+![Šlep Služba Sarajevo Website Mobile](ss2.PNG)
 
 ---
 
