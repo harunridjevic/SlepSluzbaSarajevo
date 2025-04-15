@@ -20,7 +20,7 @@ Here’s a preview of what the site looks like:
 
 ![Šlep Služba Sarajevo Website](ss1.PNG)
 
-And this is what it looks like on a phone + dark mode:
+And this is what it looks like with dark mode:
 
 ![Šlep Služba Sarajevo Website Mobile](ss2.PNG)
 
