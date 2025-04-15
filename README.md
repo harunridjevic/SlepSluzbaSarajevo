@@ -3,7 +3,7 @@
 
 **Šlep Služba Sarajevo** is a front-end project developed for a towing company based in Sarajevo. This application presents the company's services in a modern, responsive, and user-friendly interface. 
 
-The website is **live** and available at: [https://slepsluzbasarajevo.com](https://slepsluzbasarajevo.com)
+The website is **live** and available at: [https://slepsluzbasarajevo.com](https://www.slepsluzbasarajevo.com)
 
 ---
 
