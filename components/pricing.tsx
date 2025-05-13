@@ -30,7 +30,6 @@ const pricingPackages = [
     description: "Usluga transporta radnih masina, viljuskara, kamiona i ostalih terata 2.5T do 8T po dogovoru!",
     features: [
       "Siguran transport teške opreme",
-      "Ekološki odgovoran pristup",
       "Prioritetna obrada i podrška",
       "Usluga prilagođena vašim potrebama",
     ],
