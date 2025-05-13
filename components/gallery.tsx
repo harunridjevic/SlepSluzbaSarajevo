@@ -39,7 +39,7 @@ export default function Gallery() {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <section className="pt-20 pb-10 px-6 bg-blue-100 dark:bg-gray-800">
+    <section className="pt-20 pb-20 px-6 bg-blue-100 dark:bg-gray-800">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-blue-800 dark:text-white">Galerija</h2>
         
