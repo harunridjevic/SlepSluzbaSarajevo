@@ -19,7 +19,7 @@ const usluge = [
   }, 
   {
     icon: Cog,
-    title: "Transport mašina",
+    title: "Specijalni transporti",
     description: "Specijalan transport radnih mašina, viljuškara, kamiona i ostalih tereta do 8 tona.",
   }
 ]
