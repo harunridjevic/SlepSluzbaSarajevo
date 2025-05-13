@@ -30,6 +30,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="#pricing" className="hover:text-blue-300 transition-colors dark:hover:text-blue-500">
+                Zašto izabrati nas
+              </Link>
+            </li>
+            <li>
               <Link href="#contact" className="hover:text-blue-300 transition-colors dark:hover:text-blue-500">
                 Kontakt
               </Link>
