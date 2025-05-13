@@ -7,6 +7,7 @@ const Hero = dynamic(() => import("../components/hero"));
 const Services = dynamic(() => import("../components/services"));
 const WhyChooseUs = dynamic(() => import("../components/why-choose-us"));
 const Gallery = dynamic(() => import("../components/gallery"));
+const Pricing = dynamic(() => import("../components/pricing"));
 const FAQ = dynamic(() => import("../components/faq"));
 const ContactForm = dynamic(() => import("../components/contact-form"));
 const Footer = dynamic(() => import("../components/footer"));
@@ -57,6 +58,7 @@ export default function Home() {
           <Hero />
           <Services />
           <WhyChooseUs />
+          <Pricing />
           <Gallery />
           <ContactForm />
         </main>

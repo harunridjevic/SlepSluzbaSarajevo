@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Truck, Car, Wrench, Clock, Battery, Key, FuelIcon as GasPump, PenToolIcon as Tools, LifeBuoy as Help } from "lucide-react"
+import { Truck, Car, Wrench, Clock, Battery, Key, FuelIcon as GasPump, PenToolIcon as Tools, LifeBuoy as Help, Cog} from "lucide-react"
 
 const usluge = [
   {
@@ -18,15 +18,15 @@ const usluge = [
     description: "Brza i sigurna pomoć pri izvlačenju vozila iz nepristupačnih terena uz korištenje specijalizovane opreme.",
   }, 
   {
-    icon: Clock,
-    title: "Dostupnost 24/7",
-    description: "Služba dostupna 24 časa, svaki dan, u bilo koje vrijeme, za vaš mir.",
+    icon: Cog,
+    title: "Transport mašina",
+    description: "Specijalan transport radnih mašina, viljuškara, kamiona i ostalih tereta do 8 tona.",
   }
 ]
 
 export default function Usluge() {
   return (
-    <section id="usluge" className="py-20 px-6 bg-white dark:bg-gray-900 ">
+    <section id="services" className="py-20 px-6 bg-white dark:bg-gray-900 ">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-blue-800 dark:text-white">Naše sveobuhvatne usluge</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

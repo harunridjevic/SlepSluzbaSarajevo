@@ -20,7 +20,7 @@ export default function WhyChooseUs() {
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
           <div className="md:w-1/2 mb-10 md:mb-0">
             <Image
-              src="/gallery-img1.webp"
+              src="/gallery-img11.webp"
               alt="Šleper u akciji"
               width={600}
               height={400}

@@ -68,6 +68,14 @@ export default function Header() {
             </li>
             <li>
               <Link
+                href="#pricing"
+                className="inline-block py-2 px-6 rounded-full bg-blue-800 hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-500 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+              >
+                Cjenovnik
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="#contact"
                 className="inline-block py-2 px-6 rounded-full bg-blue-800 hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-500 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
               >
@@ -128,6 +136,15 @@ export default function Header() {
                     onClick={closeModal}
                   >
                     Zašto nas izabrati
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#pricing"
+                    className="block py-2 px-6 rounded-lg bg-blue-800 hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-500 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                    onClick={closeModal}
+                  >
+                    Cjenovnik
                   </Link>
                 </li>
                 <li>

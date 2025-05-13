@@ -89,7 +89,7 @@ export default function KontaktForma() {
   );
 
   return (
-    <section id="contact" className="py-20 px-6 bg-blue-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 px-6 bg-white dark:bg-gray-900">
       <div className="container mx-auto max-w-2xl">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-800 dark:text-white">Kontaktirajte nas</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
