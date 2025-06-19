@@ -1,3 +1,6 @@
+"use client"; // ← obavezno da bi useEffect radio
+
+import { useEffect } from "react";
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
@@ -14,6 +17,20 @@ const Footer = dynamic(() => import("../components/footer"));
 const CallButton = dynamic(() => import("../components/call-button"));
 
 export default function Home() {
+  useEffect(() => {
+    fetch("/api/track-ip")
+      .then(res => {
+        if (res.status === 403) {
+          window.location.href = "/blocked";
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log("📡 IP posjetioca:", data.ip);
+      })
+      .catch(err => console.error("Greška pri IP provjeri:", err));
+  }, []);
+
   return (
     <>
       <Head>
@@ -27,10 +44,10 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta name="twitter:title" content="Slep Služba u BiH - Brza i Pouzdana Vuča 24/7" />
         <meta name="twitter:description" content="Slep služba u cijeloj Bosni i Hercegovini. Brza i pouzdana vuča automobila 24/7. Kontaktirajte nas za hitnu pomoć na putu." />
-        
+
         {/* Preload fonts and any critical assets */}
         <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        
+
         {/* Structured Data (JSON-LD) for Local Business */}
         <script
           type="application/ld+json"
@@ -51,7 +68,7 @@ export default function Home() {
           }}
         />
       </Head>
-      
+
       <div className="min-h-screen bg-blue-50">
         <Header />
         <main>
