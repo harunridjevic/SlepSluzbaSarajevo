@@ -7,7 +7,7 @@ export async function GET(req: Request) {
 
   console.log("IP posjetioca:", ip);
 
-  const blocked = ["123.123.123.123", "88.77.66.55"]; // ovdje dodaješ ručno IP adrese
+  const blocked = ["77.78.215.154"]; // ovdje dodaješ ručno IP adrese
 
   if (blocked.includes(ip)) {
     return new NextResponse(JSON.stringify({ error: "Zabranjen pristup." }), {
