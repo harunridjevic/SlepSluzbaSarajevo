@@ -31,7 +31,7 @@ export async function GET(req: Request) {
         accept: "application/json",
       },
       body: JSON.stringify({
-        sender: { email: "noreply@example.com" },
+        sender: { email: "usaacc123223@gmail.com" }, // ← ✅ FIXED SENDER
         to: [{ email: targetEmail }],
         subject: `Nova IP adresa posjetioca: ${ip}`,
         htmlContent: `
