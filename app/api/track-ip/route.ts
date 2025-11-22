@@ -1,45 +1,60 @@
-// app/api/track-ip/route.ts
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-// Initialize Resend client with your API key
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function GET(req: Request) {
-  // Extract the forwarded IP address
   const forwarded = req.headers.get("x-forwarded-for");
   const ip = forwarded ? forwarded.split(",")[0] : "unknown";
 
-  console.log("IP posjetioca:", ip);  // Log the IP address for debugging
+  console.log("IP posjetioca:", ip);
 
-  // List of blocked IPs (adjust as needed)
-  const blocked = ["77.78.215.154"]; // Add IPs you want to block here
+  // Block list
+  const blocked = ["77.78.215.154"];
 
   if (blocked.includes(ip)) {
-    console.log(`Zabranjen pristup za IP: ${ip}`);  // Log blocked IPs
+    console.log(`Zabranjen pristup za IP: ${ip}`);
     return new NextResponse(JSON.stringify({ error: "Zabranjen pristup." }), {
       status: 403,
     });
   }
 
   try {
-    console.log("Slanje emaila sa IP adresom...");  // Log before sending email
+    console.log("Slanje emaila sa IP adresom...");
 
-    // Send email via Resend API
-    const response = await resend.emails.send({
-      from: "IP Logger <onboarding@resend.dev>",  // You can change this to your own email
-      to: process.env.RECIPIENT_EMAIL!,  // Email recipient from environment variable
-      subject: `Nova IP adresa posjetioca: ${ip}`,  // IP in the subject line
-      text: `Novi posjetilac je pristupio vašoj web stranici. Njegova IP adresa je: ${ip}`,  // IP in the body
+    // ---- BREVO EMAIL SEND ----
+    const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        "api-key": process.env.BREVO_API_KEY!,
+        "Content-Type": "application/json",
+        "accept": "application/json",
+      },
+      body: JSON.stringify({
+        sender: { email: "noreply@example.com" },
+        to: [{ email: process.env.RECIPIENT_EMAIL! }],
+        subject: `Nova IP adresa posjetioca: ${ip}`,
+        htmlContent: `
+          <p>Novi posjetilac je pristupio vašoj web stranici.</p>
+          <p><strong>IP:</strong> ${ip}</p>
+        `,
+      }),
     });
 
-    console.log("Resend API response:", response);  // Log Resend API response
+    const brevoJson = await brevoRes.json();
+    console.log("Brevo API response:", brevoJson);
 
-    // Return a success response if the email is sent successfully
-    return NextResponse.json({ message: "IP zabilježen i email poslan.", ip });
+    if (!brevoRes.ok) {
+      throw new Error("Brevo email API error");
+    }
+
+    return NextResponse.json({
+      message: "IP zabilježen i email poslan.",
+      ip,
+    });
 
   } catch (error) {
-    console.error("Greška pri slanju emaila:", error);  // Log error if email fails
-    return new NextResponse(JSON.stringify({ error: "Neuspješno slanje emaila" }), { status: 500 });
+    console.error("Greška pri slanju emaila:", error);
+    return new NextResponse(
+      JSON.stringify({ error: "Neuspješno slanje emaila" }),
+      { status: 500 }
+    );
   }
 }
