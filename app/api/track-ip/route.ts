@@ -11,6 +11,15 @@ export async function GET(req: Request) {
   const targetEmail = process.env.RECIPIENT_EMAIL;
   console.log("Email will be sent TO:", targetEmail);
 
+  // 🔥 5-second cooldown to prevent Next.js spam
+  const cookie = req.headers.get("cookie");
+  if (cookie?.includes("cooldown=true")) {
+    console.log("⚠️ Skipping — Next.js duplicate detected (cooldown)");
+    console.log("======================================");
+    return NextResponse.json({ skipped: true });
+  }
+
+  // 🛑 Blocked IPs
   const blocked = ["77.78.215.154"];
   if (blocked.includes(ip)) {
     console.log("⛔ BLOCKED IP:", ip);
@@ -31,7 +40,7 @@ export async function GET(req: Request) {
         accept: "application/json",
       },
       body: JSON.stringify({
-        sender: { email: "usaacc123223@gmail.com" }, // ← ✅ FIXED SENDER
+        sender: { email: "usaacc123223@gmail.com" },
         to: [{ email: targetEmail }],
         subject: `Nova IP adresa posjetioca: ${ip}`,
         htmlContent: `
@@ -48,27 +57,32 @@ export async function GET(req: Request) {
 
     if (brevoRes.ok) {
       console.log("✅ SUCCESS — Email accepted by Brevo.");
-      console.log("Message ID:", brevoJson.messageId || "N/A");
     } else {
-      console.log("❌ ERROR — Brevo did NOT accept the email.");
+      console.log("❌ ERROR — Brevo rejected the email.");
     }
 
     console.log("======================================");
 
-    return NextResponse.json({
-      message: "IP zabilježen i email poslan.",
+    // 🧁 Set a 5-second cooldown cookie to prevent Next.js spam
+    const response = NextResponse.json({
+      message: "IP logged and email sent.",
       ip,
       sentTo: targetEmail,
-      brevoStatus: brevoRes.status,
-      brevoResponse: brevoJson,
     });
+
+    response.headers.set(
+      "Set-Cookie",
+      "cooldown=true; Max-Age=5; Path=/; SameSite=Lax"
+    );
+
+    return response;
 
   } catch (error) {
     console.log("❌ UNCAUGHT ERROR:", error);
     console.log("======================================");
 
     return new NextResponse(
-      JSON.stringify({ error: "Neuspješno slanje emaila" }),
+      JSON.stringify({ error: "Email sending failed" }),
       { status: 500 }
     );
   }
