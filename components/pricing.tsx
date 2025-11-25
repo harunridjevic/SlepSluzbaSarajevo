@@ -7,7 +7,7 @@ const pricingPackages = [
     price: "60 KM",
     description: "Sarajevo i okolica",
     features: [
-      "Besprijekorno šlepanje do 20 km",
+      "Šlepanje do 10km",
       "Brz dolazak na lokaciju",
       "Stručan i ljubazan tim",
       "Sigurna i pouzdana usluga",
