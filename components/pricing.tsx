@@ -21,7 +21,7 @@ const pricingPackages = [
       "Šlepanje na veće udaljenosti",
       "Korištenje moderne i pouzdane opreme",
       "Transparentne cijene bez skrivenih troškova",
-      "Dostupnost 24/7",
+      
     ],
   },
   {
