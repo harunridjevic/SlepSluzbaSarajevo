@@ -14,7 +14,7 @@ const pricingPackages = [
     ],
   },
   {
-    title: "Transport vozila preko 20km",
+    title: "Transport vozila preko 10km",
     price: "Cijena po dogovoru",
     description: "Cijena zavisi od tipa vozila i udaljenosti.",
     features: [
