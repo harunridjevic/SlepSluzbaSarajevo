@@ -4,24 +4,24 @@ import { Check } from "lucide-react";
 const pricingPackages = [
   {
     title: "Transport vozila",
-    price: "60 KM",
+    price: "70 KM",
     description: "Sarajevo i okolica",
     features: [
-      "Besprijekorno šlepanje do 20 km",
+      "Šlepanje do 10km",
       "Brz dolazak na lokaciju",
       "Stručan i ljubazan tim",
       "Sigurna i pouzdana usluga",
     ],
   },
   {
-    title: "Transport vozila preko 20km",
+    title: "Transport vozila preko 10km",
     price: "Cijena po dogovoru",
     description: "Cijena zavisi od tipa vozila i udaljenosti.",
     features: [
       "Šlepanje na veće udaljenosti",
       "Korištenje moderne i pouzdane opreme",
       "Transparentne cijene bez skrivenih troškova",
-      "Dostupnost 24/7",
+      
     ],
   },
   {
