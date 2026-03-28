@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 const pricingPackages = [
   {
     title: "Transport vozila",
-    price: "60 KM",
+    price: "70 KM",
     description: "Sarajevo i okolica",
     features: [
       "Šlepanje do 10km",
